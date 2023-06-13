@@ -14,6 +14,7 @@ function App() {
 
 const Scraper = () => {
     const [classement, setClassement] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const url = 'https://corsproxy.io/?' + encodeURIComponent('https://green-got.com/vote?utm_campaign=[Email]+Lancement+des+votes+Jour+J&utm_content=[Email]+Lancement+des+votes+Jour+J&utm_medium=email_action&utm_source=customerio');
@@ -34,15 +35,20 @@ const Scraper = () => {
 
                 classementData.sort((a, b) => b.nombreVote - a.nombreVote);
                 setClassement(classementData);
+                setLoading(false);
             })
             .catch(error => {
                 console.error('Une erreur s\'est produite lors du scraping du site :', error);
+                setLoading(false);
             });
     }, []);
 
     return (
         <div className={"container mx-auto"}>
             <h1 className={"text-center mb-10 text-5xl mt-6 text-white"}>Classement Green Got <img className={"inline w-10 h-10"} src="https://em-content.zobj.net/thumbs/240/apple/354/trophy_1f3c6.png" alt=""/></h1>
+            {loading ? (
+                <div className="text-center mt-44 text-3xl">Tout vient à point à qui sait attendre 👐</div>
+            ) : (
             <div className="flex flex-col mb-20">
                 {classement.map((entreprise, index) => (
                     <div key={index} className="flex justify-between py-2">
@@ -52,6 +58,7 @@ const Scraper = () => {
                     </div>
                 ))}
             </div>
+            )}
         </div>
     );
 };
