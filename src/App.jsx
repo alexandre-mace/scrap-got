@@ -42,12 +42,12 @@ const Scraper = () => {
 
     return (
         <div className={"container mx-auto"}>
-            <h1 className={"text-center mb-10 text-5xl mt-6"}>Classement Green Got <img className={"inline w-10 h-10"} src="https://em-content.zobj.net/thumbs/240/apple/354/trophy_1f3c6.png" alt=""/></h1>
+            <h1 className={"text-center mb-10 text-5xl mt-6 text-white"}>Classement Green Got <img className={"inline w-10 h-10"} src="https://em-content.zobj.net/thumbs/240/apple/354/trophy_1f3c6.png" alt=""/></h1>
             <div className="flex flex-col mb-20">
                 {classement.map((entreprise, index) => (
                     <div key={index} className="flex justify-between py-2">
                         <span className="text-gray-300 mr-4">{index + 1}.</span>
-                        <span className="font-semibold mr-4">{entreprise.nomEntreprise}</span>
+                        <span className="font-semibold text-white mr-4">{entreprise.nomEntreprise}</span>
                         <span className="text-blue-400">{entreprise.nombreVote} votants</span>
                     </div>
                 ))}
