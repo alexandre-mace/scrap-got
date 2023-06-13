@@ -16,7 +16,7 @@ const Scraper = () => {
     const [classement, setClassement] = useState([]);
 
     useEffect(() => {
-        const url = 'https://cors-anywhere.herokuapp.com/https://green-got.com/vote?utm_campaign=[Email]+Lancement+des+votes+Jour+J&utm_content=[Email]+Lancement+des+votes+Jour+J&utm_medium=email_action&utm_source=customerio';
+        const url = 'https://corsproxy.io/?' + encodeURIComponent('https://green-got.com/vote?utm_campaign=[Email]+Lancement+des+votes+Jour+J&utm_content=[Email]+Lancement+des+votes+Jour+J&utm_medium=email_action&utm_source=customerio');
 
         axios.get(url)
             .then(response => {
